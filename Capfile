@@ -14,7 +14,7 @@ require 'capistrano/rvm'
 require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 require 'capistrano/puma'
-require 'capistrano-resque'
+# require 'capistrano-resque'
 require 'capistrano-db-tasks'
 
 install_plugin Capistrano::Puma

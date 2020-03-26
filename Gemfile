@@ -23,6 +23,8 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'ransack'
 gem 'redis', '~> 4.0'
 gem 'smart_error'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 group :development do
   gem 'annotate'
   gem 'listen', '>= 3.0.5', '< 3.2'

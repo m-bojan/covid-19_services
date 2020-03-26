@@ -1,15 +1,8 @@
 # frozen_string_literal: true
 
-# server-based syntax
-# ======================
 set :branch, 'master'
+set :server_ip, '13.233.118.114'
 
-# server '127.0.0.1',
-#        roles: %w[web app db],
-#        ssh_options: {
-#          user: 'deployer',
-#          keys: %w[~/.ssh/id_rsa],
-#          forward_agent: false,
-#          auth_methods: %w[publickey password]
-#          # password: "please use keys"
-#        }
+set :nginx_server_name, "api.covid-19.clicksandbox.com #{fetch(:application)}.local"
+
+server fetch(:server_ip), user: 'ubuntu', roles: %w[web app db]

@@ -23,8 +23,9 @@
 #  fk_rails_...  (pharmacy_id => pharmacies.id) ON DELETE => cascade
 #
 class PharmacyItem < ApplicationRecord
+  include PharmacyItemPresenter
   belongs_to :pharmacy
   belongs_to :item
-
+  delegate :item_type, to: :item, prefix: false, allow_nil: true
   validates_uniqueness_of :pharmacy_id, scope: :item_id, message: 'لايمكن ان تتكرر نفس العنصر لنفس الصيدلية'
 end

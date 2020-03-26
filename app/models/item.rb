@@ -26,5 +26,5 @@ class Item < ApplicationRecord
     facemask: 1,
     gloves: 2,
     sterile: 3
-  },scope: true, predicates: true
+  }, scope: true, predicates: true
 end

@@ -13,8 +13,12 @@ module PharmacyPresenter
       t.add :location
       t.add :longitude
       t.add :latitude
-      t.add :created_at
-      t.add :updated_at
+      t.add :facemask_count
+      t.add :gloves_count
+      t.add :sterile_count
+      t.add :last_update
+      t.add :city_id
+      t.add :state_id
     end
 
     api_accessible :index, extend: :base

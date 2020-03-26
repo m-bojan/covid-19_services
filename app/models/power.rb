@@ -150,4 +150,26 @@ class Power
   power :destroyable_items do
     Item
   end
+
+  ######################## V1::PharmacyItemsController #######################
+
+  power :pharmacy_items_index do
+    PharmacyItem
+  end
+
+  power :pharmacy_items_show do
+    PharmacyItem
+  end
+
+  power :creatable_pharmacy_items do
+    PharmacyItem
+  end
+
+  power :updatable_pharmacy_items do
+    PharmacyItem
+  end
+
+  power :destroyable_pharmacy_items do
+    PharmacyItem
+  end
 end

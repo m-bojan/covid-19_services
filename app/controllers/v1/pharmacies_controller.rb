@@ -59,7 +59,13 @@ class V1::PharmaciesController < V1::BaseController
   end
 
   # Search filters
-  # def search_params; end
+  def search_params
+    {
+      region_id_eq: params[:region_id],
+      region_city_id_eq: params[:city_id],
+      region_city_state_id_eq: params[:state_id]
+    }
+  end
 
   # Custom ordering and sorting
   # def get_order; end

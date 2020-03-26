@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :cities
     resources :regions
     resources :pharmacies
+    resources :pharmacy_items, only: %i[create update]
     namespace :auth, defaults: { format: :json } do
       resources :sign_in, only: :create
     end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ItemPresenter
+module PharmacyItemPresenter
   extend ActiveSupport::Concern
 
   included do
@@ -8,9 +8,11 @@ module ItemPresenter
 
     api_accessible :base do |t|
       t.add :id
-      t.add :name
-      t.add :item_type
-      t.add :description
+      t.add :pharmacy_id
+      t.add :item_id
+      t.add :count
+      t.add :created_at
+      t.add :updated_at
     end
 
     api_accessible :index, extend: :base

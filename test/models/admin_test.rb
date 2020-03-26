@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: admins
@@ -6,8 +8,8 @@
 #  email           :string
 #  name            :string           not null
 #  password_digest :string
-#  role            :integer          default(1), not null
-#  status          :integer          default(1), not null
+#  role            :integer          default("admin"), not null
+#  status          :integer          default("active"), not null
 #  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

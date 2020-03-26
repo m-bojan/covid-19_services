@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_185441) do
+ActiveRecord::Schema.define(version: 2020_03_26_081859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,20 @@ ActiveRecord::Schema.define(version: 2020_03_25_185441) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
     t.index ["state_id"], name: "index_cities_on_state_id"
+  end
+
+  create_table "pharmacies", force: :cascade do |t|
+    t.bigint "region_id", null: false
+    t.string "name", null: false
+    t.string "location"
+    t.decimal "longitude", precision: 10, scale: 8, default: "0.0", null: false
+    t.decimal "latitude", precision: 10, scale: 8, default: "0.0", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["region_id", "name"], name: "index_pharmacies_on_region_id_and_name", unique: true
+    t.index ["region_id"], name: "index_pharmacies_on_region_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -40,14 +53,17 @@ ActiveRecord::Schema.define(version: 2020_03_25_185441) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_regions_on_city_id"
+    t.index ["name"], name: "index_regions_on_name", unique: true
   end
 
   create_table "states", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_states_on_name", unique: true
   end
 
   add_foreign_key "cities", "states", on_delete: :cascade
+  add_foreign_key "pharmacies", "regions", on_delete: :cascade
   add_foreign_key "regions", "cities", on_delete: :cascade
 end

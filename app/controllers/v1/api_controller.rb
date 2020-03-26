@@ -10,7 +10,20 @@ class V1::ApiController < ApplicationController
   before_action :set_locale
   require_power_check
 
-  self.responder = ApplicationResponder
+  # Authenticate the request by headers (used for all apis)
+  def authenticate_user!
+    return if missing_headers!('Authorization')
+
+    @token ||= AuthenticateRequest.get(Admin, request.headers['Authorization'].split(' ').last)
+    set_curret_user_with_access
+  end
+
+  def set_curret_user_with_access
+    @current_user = @token[:user]
+    @access       = @token[:access]
+    return render_forbidden(error: 1201, message: I18n.t('errors.1305')) if @current_user.inactive?
+  end
+  # self.responder = ApplicationResponder
 
   private
 

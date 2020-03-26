@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: cities
@@ -10,6 +12,7 @@
 #
 # Indexes
 #
+#  index_cities_on_name      (name) UNIQUE
 #  index_cities_on_state_id  (state_id)
 #
 # Foreign Keys

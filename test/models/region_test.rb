@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: regions
@@ -11,6 +13,7 @@
 # Indexes
 #
 #  index_regions_on_city_id  (city_id)
+#  index_regions_on_name     (name) UNIQUE
 #
 # Foreign Keys
 #

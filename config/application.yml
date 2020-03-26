@@ -1,0 +1,29 @@
+default:
+  url:     'http://localhost:3000'
+  default_image: 'http://localhost:3000'
+  default_sub_category_image: ''
+
+development:
+  url:     'http://localhost:3000'
+  default_image: 'http://localhost:3000/default_image.png'
+  default_sub_category_image: 'http://localhost:3000'
+
+dev:
+  url:     'http://api.laan.dev.clicksandbox.com'
+  default_image: 'http://api.laan.dev.clicksandbox.com/default_image.png'
+  default_sub_category_image: 'http://api.laan.dev.clicksandbox.com/'
+
+test:
+  url:     'http://api.laan.test.clicksandbox.com'
+  default_image: 'http://api.laan.test.clicksandbox.com/default_image.png'
+  default_sub_category_image: 'http://api.laan.test.clicksandbox.com'
+
+staging:
+  url:     'http://api.laan.staging.clicksandbox.com'
+  default_image: 'http://api.laan.staging.clicksandbox.com/default_image.png'
+  default_sub_category_image: 'http://api.laan.staging.clicksandbox.com'
+
+production:
+  url:     'http://localhost:3000'
+  default_image: 'http://localhost:3000'
+  default_sub_category_image: 'http://localhost:3000'

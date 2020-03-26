@@ -28,6 +28,9 @@ module Covid19Services
     config.middleware.use Rack::Attack
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    # Accepted and supportd locales
+    config.i18n.available_locales = %i[en ar]
+    config.i18n.default_locale = :ar
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

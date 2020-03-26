@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_26_081859) do
+ActiveRecord::Schema.define(version: 2020_03_26_175237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2020_03_26_081859) do
     t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "item_type", null: false
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_items_on_name", unique: true
+  end
+
   create_table "pharmacies", force: :cascade do |t|
     t.bigint "region_id", null: false
     t.string "name", null: false
@@ -45,6 +54,17 @@ ActiveRecord::Schema.define(version: 2020_03_26_081859) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["region_id", "name"], name: "index_pharmacies_on_region_id_and_name", unique: true
     t.index ["region_id"], name: "index_pharmacies_on_region_id"
+  end
+
+  create_table "pharmacy_items", force: :cascade do |t|
+    t.bigint "pharmacy_id", null: false
+    t.bigint "item_id", null: false
+    t.integer "count", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_pharmacy_items_on_item_id"
+    t.index ["pharmacy_id", "item_id"], name: "index_pharmacy_items_on_pharmacy_id_and_item_id", unique: true
+    t.index ["pharmacy_id"], name: "index_pharmacy_items_on_pharmacy_id"
   end
 
   create_table "regions", force: :cascade do |t|
@@ -65,5 +85,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_081859) do
 
   add_foreign_key "cities", "states", on_delete: :cascade
   add_foreign_key "pharmacies", "regions", on_delete: :cascade
+  add_foreign_key "pharmacy_items", "items", on_delete: :cascade
+  add_foreign_key "pharmacy_items", "pharmacies", on_delete: :cascade
   add_foreign_key "regions", "cities", on_delete: :cascade
 end

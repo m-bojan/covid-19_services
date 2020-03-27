@@ -2,7 +2,7 @@
 
 class JsonWebToken
   # secret to encode and decode token
-  HMAC_SECRET = Rails.application.secrets.secret_key_base
+  HMAC_SECRET = "31e604e33c20b46c64146393ea1da8fc9a05bb39f32e58c56b17c1a7619c25b831e4715298db894037f02ab7ae742fab07c292a383af35f8dc819fc8f8bb5a5d"
   ALGORITHM   = 'HS256'
 
   # Encode and generate a token

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class V1::Auth::SessionsController < V1::BaseController
+class V1::SessionsController < V1::BaseController
   power :sessions
   skip_before_action :authenticate_user!
 

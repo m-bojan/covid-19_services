@@ -11,8 +11,6 @@ Rails.application.routes.draw do
     resources :regions
     resources :pharmacies
     resources :pharmacy_items, only: %i[create update]
-    namespace :auth, defaults: { format: :json } do
-      resources :sessions, only: :create
-    end
+    resources :sessions#, only: :create
   end
 end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class V1::Auth::SignInController < V1::BaseController
-  power :sign_in
+class V1::Auth::SessionsController < V1::BaseController
+  power :sessions
   skip_before_action :authenticate_user!
 
   def create

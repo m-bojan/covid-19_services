@@ -19,7 +19,7 @@ class Power
     end
   end
 
-  power :sign_in do
+  power :sessions do
     true
   end
 

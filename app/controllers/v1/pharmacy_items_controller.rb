@@ -2,8 +2,8 @@
 
 class V1::PharmacyItemsController < V1::BaseController
   power :pharmacy_items, map: {
-    # [:index]   => :pharmacy_items_index,
-    # [:show]    => :pharmacy_items_show,
+    [:index]   => :pharmacy_items_index,
+    [:show]    => :pharmacy_items_show,
     [:create] => :creatable_pharmacy_items,
     [:update] => :updatable_pharmacy_items
     # [:destroy] => :destroyable_pharmacy_items

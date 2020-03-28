@@ -63,10 +63,33 @@ class V1::PharmaciesController < V1::BaseController
     {
       region_id_eq: params[:region_id],
       region_city_id_eq: params[:city_id],
-      region_city_state_id_eq: params[:state_id]
+      region_city_state_id_eq: params[:state_id],
+      name_cont: params[:name]
     }
   end
+  
+  def build_collection(object = nil)
+    result = (object || scope)
+    result = result.ransack(search_params).result           if search_params.present?
+    result = result.page(params[:page]).per(params[:limit]) if params[:limit] != '-1'
+    result = order(result)
+    result
+  end
 
-  # Custom ordering and sorting
-  # def get_order; end
+  def order(result)
+    if sort == 'updated_at'
+      result.joins(:pharmacy_items).order("pharmacy_items.updated_at #{direction}")
+    else
+      result.order(sort.to_sym => direction)
+    end
+  end
+
+  def sort
+    return params[:sort] if %w[id created_at updated_at].include?(params[:sort])
+    'created_at'
+  end
+
+  def direction
+    params[:direction]&.to_sym || :desc
+  end
 end

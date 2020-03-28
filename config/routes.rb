@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :cities
     resources :regions
     resources :pharmacies
-    resources :pharmacy_items, only: %i[create update]
-    resources :sessions#, only: :create
+    resources :pharmacy_items
+    resources :sessions
   end
 end

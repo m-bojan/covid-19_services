@@ -19,6 +19,7 @@ module PharmacyPresenter
       t.add :last_update
       t.add :city_id
       t.add :state_id
+      t.add :pharmacy_items, template: :base
     end
 
     api_accessible :index, extend: :base

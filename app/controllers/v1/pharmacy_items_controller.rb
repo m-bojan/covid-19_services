@@ -49,7 +49,12 @@ class V1::PharmacyItemsController < V1::BaseController
   end
 
   # Search filters
-  # def search_params; end
+  def search_params
+    {
+      item_item_type_eq: params[:item_type],
+      pharmacy_id_eq: params[:pharmacy_id]
+    }
+  end
 
   # Custom ordering and sorting
   # def get_order; end

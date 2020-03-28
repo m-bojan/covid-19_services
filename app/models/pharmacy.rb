@@ -24,7 +24,9 @@
 #
 class Pharmacy < ApplicationRecord
   include PharmacyPresenter
+
   belongs_to :region
+  has_one_attached :avatar
   has_many :pharmacy_items
   has_many :items, through: :pharmacy_items
 
@@ -66,5 +68,12 @@ class Pharmacy < ApplicationRecord
 
   def state_id
     region.city.state_id
+  end
+  def avatar_url
+    avatar.attached? ? [CONSTANT[:url], url].compact.join : CONSTANT[:default_image]
+  end
+
+  def url
+    Rails.application.routes.url_helpers.rails_blob_path(avatar, only_path: true)
   end
 end

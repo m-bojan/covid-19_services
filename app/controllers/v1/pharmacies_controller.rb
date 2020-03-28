@@ -46,7 +46,7 @@ class V1::PharmaciesController < V1::BaseController
 
   # Whitelist parameters
   def pharmacy_params
-    params.require(:pharmacy).permit(:name, :address, :latitude, :location, :longitude, :region_id)
+    params.require(:pharmacy).permit(:name, :address, :latitude, :location, :longitude, :region_id, :avatar)
   end
 
   def show_template
@@ -78,7 +78,7 @@ class V1::PharmaciesController < V1::BaseController
 
   def order(result)
     if sort == 'updated_at'
-      result.joins(:pharmacy_items).order("pharmacy_items.updated_at #{direction}")
+      result.joins(:pharmacy_items).order("pharmacy_items.updated_at #{direction}").uniq
     else
       result.order(sort.to_sym => direction)
     end

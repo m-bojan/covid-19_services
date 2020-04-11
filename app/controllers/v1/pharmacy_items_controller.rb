@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class V1::PharmacyItemsController < V1::BaseController
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   power :pharmacy_items, map: {
     [:index]   => :pharmacy_items_index,
     [:show]    => :pharmacy_items_show,
